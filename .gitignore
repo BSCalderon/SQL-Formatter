@@ -1,0 +1,5 @@
+#ignore all files except username_formatter.parray
+/build 
+/dist 
+/__pycache__ 
+/username_formatter.spec
