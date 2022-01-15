@@ -15,22 +15,27 @@ while True:
     if event == sg.WIN_CLOSED or event == 'Cancel':
         break
 
-    users = values[0].lower().splitlines()
-    new_users = []
-    for user in users:
-        new_user = "'" + user + "',"
-        new_users.append(new_user)
-    last_element = new_users[-1].replace(',', '')
-    del new_users[-1]
-    new_users.append(last_element)
+    if event == 'Format' and len(values[0]) > 0:
 
-    if event == 'Format':
-        window['-OUTPUT-'].Update('')
-        for user in new_users:
-            print(user)
+        try:
+            users = values[0].lower().splitlines()
+            new_users = []
+            for user in users:
+                new_user = "'" + user + "',"
+                new_users.append(new_user)
+            last_element = new_users[-1].replace(',', '')
+            del new_users[-1]
+            new_users.append(last_element)
+            window['-OUTPUT-'].Update('')
+
+            for user in new_users:
+                print(user)
+
+        except Exception as e:
+            print(e)
 
     if event == 'About':
         sg.Popup('About', 'Created by Ballardo Calderon',
-                 'https://github.com/BSCalderon/SQL-Formatter')
+                 'https://github.com/BSCalderon/SQL-Formatter', 'Version: 1.02')
 
 window.close()
